@@ -1,10 +1,3 @@
-require 'amazon_api'
-require 'httparty'
-require 'time'
-require 'uri'
-require 'openssl'
-require 'base64'
-
 module AmazonAPI
   ENDPOINT = 'webservices.amazon.com'
   REQUEST_URI = '/onca/xml'
