@@ -22,8 +22,9 @@ module AmazonAPI
     url = generate_request_url(params)
     results = HTTParty.get(url).parsed_response
     item_hash = results["ItemSearchResponse"]["Items"]["Item"]
-    item_hash.each do |item|
+    [item_hash].flatten.each do |item|
       matching_product = Product.new_form_hash(item)
+      matching_product.save
     end
   end
 
@@ -38,8 +39,7 @@ module AmazonAPI
       "ResponseGroup" => "Images,Offers,ItemAttributes",
       "Condition" => "New"
     }
-    search = AmazonAPI.new
-    url = search.generate_request_url(params)
+    url = generate_request_url(params)
     results = HTTParty.get(url).parsed_response
     item_hash = results["ItemLookupResponse"]["Items"]["Item"]
     matching_product = Product.new_form_hash(item_hash)

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170409092747) do
     t.datetime "updated_at", null: false
     t.string   "brand"
     t.string   "name"
-    t.float    "price"
+    t.string   "price"
     t.string   "url"
     t.string   "image"
     t.string   "asin"
